@@ -5,16 +5,16 @@
     <br>
 
     <form action="" method="post">
-      <div class="input-group mb-3" class="col">
+      <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Full name</span>
         <input type="text" class="form-control" placeholder="Enter your name" aria-label="Name"
-          aria-describedby="basic-addon1">
+          aria-describedby="basic-addon1" name="full_name">
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Username</span>
         <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-          aria-describedby="basic-addon1">
+          aria-describedby="basic-addon1" name="username">
       </div>
 
       <div class="mb-3 input-group">
@@ -32,3 +32,12 @@
 </div>
 <?php include 'inc/footer.php';
 
+// check if form is submitted
+
+// check if btn submit btn is clicked
+if (isset($_POST['submit'])) {
+    // get data from form
+    $fullname = $_POST['full_name'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+}
