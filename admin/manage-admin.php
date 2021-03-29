@@ -34,6 +34,8 @@ if (true == $result) {
     // count rows frm database
     $count = mysqli_num_rows($result);
 
+    $serial_num = 1;
+
     if ($count > 0) {
         // output data of each row
         while ($rows = mysqli_fetch_assoc($result)) {
@@ -41,9 +43,8 @@ if (true == $result) {
             $full_name = $rows['full_name'];
             $username = $rows['username']; ?>
 
-
         <tr>
-          <th scope="row"><?php echo $id; ?>
+          <th><?php echo $serial_num++; ?>
           </th>
           <td><?php echo $full_name; ?>
           </td>
