@@ -1,9 +1,8 @@
 <?php include 'inc/topbar.php'; ?>
-
 <!-- MAIN SECTION -->
 <div class="main-content">
   <div class="wrapper">
-    <h2>Manage Admin</h2>
+    <h2>Manage Categories</h2>
 
     <div class="clearfix"></div>
   </div>
