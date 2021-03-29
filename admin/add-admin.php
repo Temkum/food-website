@@ -1,4 +1,5 @@
-<?php include 'inc/topbar.php'; ?>
+<?php include 'inc/topbar.php'; 
+?>
 <div class="main-content">
   <div class="wrapper">
     <h2 class="mb-4">Add Admin</h2>
@@ -39,5 +40,12 @@ if (isset($_POST['submit'])) {
     // get data from form
     $fullname = $_POST['full_name'];
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
+
+    // insert to db
+    $sql = 'INSERT INTO `admin` SET fullname=$fullname, username=$username, password=$password';
+
+   
+
+    // $result = mysqli_query($conn, $sql) or exit(mysqli_error());
 }
