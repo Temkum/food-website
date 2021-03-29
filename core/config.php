@@ -5,7 +5,8 @@ session_start();
 // set your website title
 
 define('WEBSITE_TITLE', 'Wangis Restaurant');
-define('SITE_URL', 'localhost/burgerfood/');
+
+define('SITE_URL', '/burgerfood/');
 
 // set db variables
 define('LOCALHOST', 'localhost');

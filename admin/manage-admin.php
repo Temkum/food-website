@@ -8,7 +8,13 @@
     <?php if (isset($_SESSION['add'])) {
     echo $_SESSION['add'];
     unset($_SESSION['add']);
-}?>
+}
+
+if (isset($_SESSION['delete'])) {
+    echo $_SESSION['delete'];
+    unset($_SESSION['delete']);
+}
+?>
 
     <h2 class="mb-4">Manage Admin</h2>
 
@@ -52,7 +58,8 @@ if (true == $result) {
           </td>
           <td>
             <a href="" class="btn btn-info btn-sm mx-2">Update Admin</a>
-            <a href="" class="btn btn-danger btn-sm mx-3">Remove Admin</a>
+            <a href="<?php echo SITE_URL; ?>admin/delete-admin.php?id=<?php echo $id; ?>"
+              class="btn btn-danger btn-sm mx-3">Remove Admin</a>
           </td>
         </tr>
 
