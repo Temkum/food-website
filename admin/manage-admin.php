@@ -6,7 +6,7 @@
     <h2 class="mb-4">Manage Admin</h2>
 
     <!-- add admin -->
-    <a class="btn btn-outline-primary mb-4" href="#" role="button">Add Admin</a>
+    <a class="btn btn-outline-primary mb-4" href="add-admin.php" role="button">Add Admin</a>
 
     <table class="table table-striped">
       <thead>
