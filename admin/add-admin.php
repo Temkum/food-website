@@ -1,7 +1,13 @@
-<?php include 'inc/topbar.php'; 
+<?php include 'inc/topbar.php';
 ?>
 <div class="main-content">
   <div class="wrapper">
+    <!-- alert -->
+    <?php if (isset($_SESSION['fail'])) {
+    echo $_SESSION['fail'];
+    unset($_SESSION['fail']);
+}?>
+
     <h2 class="mb-4">Add Admin</h2>
     <br>
 
@@ -43,9 +49,20 @@ if (isset($_POST['submit'])) {
     $password = md5($_POST['password']);
 
     // insert to db
-    $sql = 'INSERT INTO `admin` SET fullname=$fullname, username=$username, password=$password';
+    $sql = "INSERT INTO `admin` SET full_name='{$fullname}', username='{$username}', password='{$password}'";
 
-   
+    $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
-    // $result = mysqli_query($conn, $sql) or exit(mysqli_error());
+    if (true == $result) {
+        $_SESSION['add'] = 'Admin added successfully!';
+
+        // redirect
+        header('Location: manage-admin.php');
+    }
+    $_SESSION['fail'] = 'Failed to add Admin!';
+
+    // redirect
+    header('Location: add-admin.php');
+
+    exit;
 }

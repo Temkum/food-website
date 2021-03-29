@@ -3,6 +3,13 @@
 <!-- MAIN SECTION -->
 <div class="main-content">
   <div class="wrapper">
+
+    <!-- alert -->
+    <?php if (isset($_SESSION['add'])) {
+    echo $_SESSION['add'];
+    unset($_SESSION['add']);
+}?>
+
     <h2 class="mb-4">Manage Admin</h2>
 
     <!-- add admin -->
