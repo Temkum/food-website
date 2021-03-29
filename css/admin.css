@@ -19,6 +19,19 @@
   clear: both;
 }
 
+.btn-primary {
+  font-weight: bold;
+}
+
+.btn-info {
+  background-color: #6cf85f;
+  border-color: #20f00d;
+}
+
+.btn-info:hover {
+  background-color: #42e833;
+}
+
 /* MENU */
 /* .menu ul {
   list-style-type: none;
