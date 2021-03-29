@@ -44,12 +44,12 @@
 // check if btn submit btn is clicked
 if (isset($_POST['submit'])) {
     // get data from form
-    $fullname = $_POST['full_name'];
+    $full_name = $_POST['full_name'];
     $username = $_POST['username'];
     $password = md5($_POST['password']);
 
     // insert to db
-    $sql = "INSERT INTO `admin` SET full_name='{$fullname}', username='{$username}', password='{$password}'";
+    $sql = "INSERT INTO `admin` SET full_name='{$full_name}', username='{$username}', password='{$password}'";
 
     $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
@@ -58,11 +58,11 @@ if (isset($_POST['submit'])) {
 
         // redirect
         header('Location: manage-admin.php');
+
+        exit;
     }
     $_SESSION['fail'] = 'Failed to add Admin!';
 
     // redirect
     header('Location: add-admin.php');
-
-    exit;
 }

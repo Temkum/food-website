@@ -70,6 +70,16 @@
   float: left;
 }
 
+table tr th {
+  border-bottom: 1px solid black;
+  padding: 1%;
+  text-align: left;
+}
+
+table tr td {
+  padding: 1%;
+}
+
 /* FOOTER */
 /* .footer {
   background-color: #ff4757;

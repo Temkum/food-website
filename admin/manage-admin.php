@@ -25,31 +25,43 @@
         </tr>
       </thead>
       <tbody>
+
+        <?php
+    $sql = 'SELECT * FROM `admin`';
+    $result = $conn->query($sql);
+
+if (true == $result) {
+    // count rows frm database
+    $count = mysqli_num_rows($result);
+
+    if ($count > 0) {
+        // output data of each row
+        while ($rows = mysqli_fetch_assoc($result)) {
+            $id = $rows['id'];
+            $full_name = $rows['full_name'];
+            $username = $rows['username']; ?>
+
+
         <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
+          <th scope="row"><?php echo $id; ?>
+          </th>
+          <td><?php echo $full_name; ?>
+          </td>
+          <td><?php echo $username; ?>
+          </td>
           <td>
             <a href="" class="btn btn-info btn-sm mx-2">Update Admin</a>
             <a href="" class="btn btn-danger btn-sm mx-3">Remove Admin</a>
           </td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td><a href="" class="btn btn-info btn-sm mx-2">Update Admin</a>
-            <a href="" class="btn btn-danger btn-sm mx-3">Remove Admin</a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry the Bird</td>
-          <td>Poupe</td>
-          <td><a href="" class="btn btn-info btn-sm mx-2">Update Admin</a>
-            <a href="" class="btn btn-danger btn-sm mx-3">Remove Admin</a>
-          </td>
-        </tr>
+
+        <?php
+        }
+    } else {
+        echo 'No data available!';
+    }
+}
+?>
       </tbody>
     </table>
 
