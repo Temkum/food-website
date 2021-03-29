@@ -66,7 +66,8 @@ if (true == $result) {
         <?php
         }
     } else {
-        echo 'No data available!';
+        // echo 'No data available!';
+        echo '<td>No data available!</td>';
     }
 }
 ?>

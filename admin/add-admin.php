@@ -54,14 +54,18 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
     if (true == $result) {
-        $_SESSION['add'] = 'Admin added successfully!';
+        $_SESSION['add'] = '<div class="alert alert-success" role="alert">
+        Admin added successfully!
+      </div>';
 
         // redirect
         header('Location: manage-admin.php');
 
         exit;
     }
-    $_SESSION['fail'] = 'Failed to add Admin!';
+    $_SESSION['fail'] = ' <div class="alert alert-danger" role="alert">
+    Failed to add Admin!
+  </div>';
 
     // redirect
     header('Location: add-admin.php');
