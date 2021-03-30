@@ -10,15 +10,20 @@
     unset($_SESSION['add']);
 }
 
-if (isset($_SESSION['delete'])) {
-    echo $_SESSION['delete'];
-    unset($_SESSION['delete']);
-}
+        if (isset($_SESSION['delete'])) {
+            echo $_SESSION['delete'];
+            unset($_SESSION['delete']);
+        }
 
-if (isset($_SESSION['update'])) {
-    echo $_SESSION['update'];
-    unset($_SESSION['update']);
-}
+        if (isset($_SESSION['update'])) {
+            echo $_SESSION['update'];
+            unset($_SESSION['update']);
+        }
+        if (isset($_SESSION['pwd_success'])) {
+            echo $_SESSION['pwd_success'];
+            unset($_SESSION['pwd_success']);
+        }
+
 ?>
 
     <h2 class="mb-4">Manage Admin</h2>
@@ -64,6 +69,8 @@ if (true == $result) {
           <td>
             <a href="<?php echo SITE_URL; ?>admin/update-admin.php?id=<?php echo $id; ?>"
               class="btn btn-info btn-sm mx-2">Update Admin</a>
+            <a href="<?php echo SITE_URL; ?>admin/pwd-change.php?id=<?php echo $id; ?>"
+              class="btn btn-secondary btn-sm mx-2">Change Password</a>
             <a href="<?php echo SITE_URL; ?>admin/delete-admin.php?id=<?php echo $id; ?>"
               class="btn btn-danger btn-sm mx-3">Remove Admin</a>
           </td>

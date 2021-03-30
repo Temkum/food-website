@@ -6,7 +6,13 @@
     <?php if (isset($_SESSION['fail'])) {
     echo $_SESSION['fail'];
     unset($_SESSION['fail']);
-}?>
+}
+    if (isset($_SESSION['user_not_found'])) {
+        echo $_SESSION['user_not_found'];
+        unset($_SESSION['user_not_found']);
+    }
+
+?>
 
     <h2 class="mb-4">Add Admin</h2>
     <br>
@@ -31,7 +37,7 @@
 
 
       <div class="col-auto">
-        <button type="submit" name="submit" class="btn btn-primary mb-3">Confirm identity</button>
+        <button type="submit" name="submit" class="btn btn-primary mb-3">Register</button>
       </div>
     </form>
     <div class="clearfix"></div>
@@ -47,9 +53,10 @@ if (isset($_POST['submit'])) {
     $full_name = $_POST['full_name'];
     $username = $_POST['username'];
     $password = md5($_POST['password']);
+    // $created_at = date();
 
     // insert to db
-    $sql = "INSERT INTO `admin` SET full_name='{$full_name}', username='{$username}', password='{$password}'";
+    $sql = "INSERT INTO `admin` SET full_name='{$full_name}', username='{$username}', password='{$password}', ";
 
     $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
