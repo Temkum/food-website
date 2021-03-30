@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 
         exit;
     }
-    $_SESSION['fail'] = ' <div class="alert alert-danger" role="alert">
+    $_SESSION['fail'] = '<div class="alert alert-danger" role="alert">
     Failed to add Admin!
   </div>';
 
