@@ -4,8 +4,17 @@
   <div class="wrapper">
     <h2 class="mb-4">Manage Categories</h2>
 
+    <?php
+        if (isset($_SESSION['category'])) {
+            echo $_SESSION['category'];
+            unset($_SESSION['category']);
+        }
+    ?>
+
     <!-- add category -->
-    <a class="btn btn-outline-primary mb-4" href="#" role="button">Add Category</a>
+    <a class="btn btn-outline-primary mb-4"
+      href="<?php echo SITE_URL; ?>admin/add-category.php"
+      role="button">Add Category</a>
 
     <table class="table table-striped">
       <thead>
