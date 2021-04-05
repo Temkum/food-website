@@ -68,11 +68,11 @@ if (true == $result) {
           </td>
           <td>
             <a href="<?php echo SITE_URL; ?>admin/update-admin.php?id=<?php echo $id; ?>"
-              class="btn btn-info btn-sm mx-2">Update Admin</a>
+              class="btn btn-info btn-sm mx-2">Update</a>
             <a href="<?php echo SITE_URL; ?>admin/pwd-change.php?id=<?php echo $id; ?>"
-              class="btn btn-secondary btn-sm mx-2">Change Password</a>
+              class="btn btn-secondary btn-sm mx-2">Modify Password</a>
             <a href="<?php echo SITE_URL; ?>admin/delete-admin.php?id=<?php echo $id; ?>"
-              class="btn btn-danger btn-sm mx-3">Remove Admin</a>
+              class="btn btn-danger btn-sm mx-3">Remove</a>
           </td>
         </tr>
 

@@ -22,24 +22,24 @@
           <td>Mark</td>
           <td>Otto</td>
           <td>
-            <a href="" class="btn btn-info btn-sm mx-2">Update Category</a>
-            <a href="" class="btn btn-danger btn-sm mx-3">Remove Category</a>
+            <a href="" class="btn btn-info btn-sm mx-2">Update</a>
+            <a href="" class="btn btn-danger btn-sm mx-3">Remove</a>
           </td>
         </tr>
         <tr>
           <th scope="row">2</th>
           <td>Jacob</td>
           <td>Thornton</td>
-          <td><a href="" class="btn btn-info btn-sm mx-2">Update Category</a>
-            <a href="" class="btn btn-danger btn-sm mx-3">Remove Category</a>
+          <td><a href="" class="btn btn-info btn-sm mx-2">Update</a>
+            <a href="" class="btn btn-danger btn-sm mx-3">Remove</a>
           </td>
         </tr>
         <tr>
           <th scope="row">3</th>
           <td>Larry the Bird</td>
           <td>Poupe</td>
-          <td><a href="" class="btn btn-info btn-sm mx-2">Update Category</a>
-            <a href="" class="btn btn-danger btn-sm mx-3">Remove Category</a>
+          <td><a href="" class="btn btn-info btn-sm mx-2">Update</a>
+            <a href="" class="btn btn-danger btn-sm mx-3">Remove</a>
           </td>
         </tr>
       </tbody>

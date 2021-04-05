@@ -10,15 +10,15 @@ include 'inc/topbar.php';
 
     <div class="col-4 text-center">
       <h2>6</h2>
-      Categories
+      Admin
     </div>
     <div class="col-4 text-center">
       <h2>6</h2>
-      Categories
+      Food
     </div>
     <div class="col-4 text-center">
       <h2>6</h2>
-      Categories
+      Order
     </div>
     <div class="col-4 text-center">
       <h2>6</h2>
