@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
     // $created_at = date();
 
     // insert to db
-    $sql = "INSERT INTO `admin` SET full_name='{$full_name}', username='{$username}', password='{$password}', ";
+    $sql = "INSERT INTO `admin` SET full_name='{$full_name}', username='{$username}', password='{$password}' ";
 
     $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 

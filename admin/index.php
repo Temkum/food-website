@@ -8,6 +8,13 @@ include 'inc/topbar.php';
   <div class="wrapper">
     <h2>Dashboard</h2>
 
+    <?php
+        if (isset($_SESSION['login'])) {
+            echo $_SESSION['login'];
+            unset($_SESSION['login']);
+        }
+    ?>
+
     <div class="col-4 text-center">
       <h2>6</h2>
       Admin

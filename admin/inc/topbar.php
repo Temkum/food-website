@@ -10,7 +10,6 @@
   <title>Food Order | Home</title>
 
   <!-- bootstrap -->
-  <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/admin.css">
