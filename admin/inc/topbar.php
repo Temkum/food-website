@@ -1,4 +1,7 @@
-<?php include '../core/config.php'; ?>
+<?php include '../core/config.php';
+
+include 'access_control.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">

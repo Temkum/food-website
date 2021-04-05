@@ -28,6 +28,11 @@ include '../core/config.php'; ?>
         unset($_SESSION['login']);
     }
 
+    if (isset($_SESSION['access-control'])) {
+        echo $_SESSION['access-control'];
+        unset($_SESSION['access-control']);
+    }
+
     ?>
     <form method="POST" action="">
       <p>Username</p>
@@ -46,31 +51,6 @@ include '../core/config.php'; ?>
 
 <?php
 
-if (isset($_POST['yes'])) {
-    // get data input
-    $username = $_POST['username'];
-    $password = md5($_POST['password']);
-
-    // query to read from db
-    $sql = 'SELECT * FROM `admin` WHERE `username`=:username AND `password`=:password';
-
-    $result = $conn->query($sql);
-
-    // check if user exist
-    $count = mysqli_num_rows($result);
-
-    if (1 == $count) {
-        // code...
-        $_SESSION['login'] = '<div class="alert alert-success" role="alert">Welcome back!</div>';
-
-        header('Location: '.SITE_URL.'admin/index.php');
-    }
-    // login fail
-    $_SESSION['login'] = '<div class="alert alert-danger" role="alert">Username or Password did not match!</div>';
-
-    header('Location: '.SITE_URL.'admin/login.php');
-}
-
 if (isset($_POST['submit'])) {
     // get data input
     $username = $_POST['username'];
@@ -87,6 +67,8 @@ if (isset($_POST['submit'])) {
     if (1 == $count) {
         // code...
         $_SESSION['login'] = '<div class="alert alert-success" role="alert">Welcome back!</div>';
+        // check if user is logged in
+        $_SESSION['user'] = $username;
 
         header('Location: '.SITE_URL.'admin/index.php');
 

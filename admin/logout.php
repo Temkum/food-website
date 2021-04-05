@@ -2,7 +2,7 @@
 
 include '../core/config.php';
 
-// destroy session and redirect to login page
+// unset user and destroy session
 session_destroy();
 
 header('Location: '.SITE_URL.'admin/login.php');
