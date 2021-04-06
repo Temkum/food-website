@@ -78,25 +78,27 @@ if (isset($_POST['submit'])) {
             if (1 == $count) {
                 // update password
                 if ($new_pwd == $confirm_pwd) {
-                    $sql_update = "UPDATE `admin` SET password='{$new_pwd}' WHERE id='{$id}'";
+                    $sql_update = "UPDATE `admin` (id,new_pwd) WHERE ('{$id}', '{$new_pwd}' )";
 
-                    $result_update = mysqli_query($conn, $sql_update);
+                    $result = mysqli_query($conn, $sql_update) or exit(mysqli_error($conn));
 
                     if (true == $result_update) {
                         // code...
                         $_SESSION['pwd_change'] = '<div class="alert alert-success" role="alert">Password updated successfully!</div>';
 
                         header('Location: '.SITE_URL.'admin/manage-admin.php');
+
+                        exit;
                     }
 
                     $_SESSION['pwd_change'] = '<div class="alert alert-danger" role="alert"> Passwords do not match!</div>';
 
                     header('Location: '.SITE_URL.'admin/pwd-change.php');
                 }
-            }
-            $_SESSION['pwd_change'] = '<div class="alert alert-danger" role="alert">User not found!</div>';
+                $_SESSION['pwd_change'] = '<div class="alert alert-danger" role="alert">User not found!</div>';
 
-            header('Location: '.SITE_URL.'admin/add-admin.php');
+                header('Location: '.SITE_URL.'admin/add-admin.php');
+            }
         }
     }
 ?>
