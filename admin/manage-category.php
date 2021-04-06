@@ -51,8 +51,21 @@
           </th>
           <td><?php echo $title; ?>
           </td>
-          <td><?php echo $image_name; ?>
+
+          <td>
+            <?php if ('' != $image_name) {
+                // display img?>
+            <img
+              src="<?php echo SITE_URL; ?>images/category/<?php echo $image_name; ?>"
+              width="100px" height="100px"
+              alt="<?php echo $image_name; ?>">
+            <?php
+            } else {
+                // error msg
+              echo '';
+            } ?>
           </td>
+
           <td><?php echo $featured; ?>
           </td>
           <td><?php echo $active; ?>
@@ -69,7 +82,7 @@
         }
     } else {
         // echo 'No data available!';
-        echo '<td>No data available!</td>';
+        echo '<div class="alert alert-danger" role="alert" >No data available!</div>';
     }
 
 ?>
