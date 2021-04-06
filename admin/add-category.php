@@ -13,14 +13,24 @@
         unset($_SESSION['category']);
     }
 
+    if (isset($_SESSION['upload'])) {
+        echo $_SESSION['upload'];
+        unset($_SESSION['upload']);
+    }
+
     ?>
 
     <!-- add category -->
-    <form method="POST" action="" class="needs-validation mb-3" novalidate>
+    <form method="POST" action="" class="needs-validation mb-3" enctype="multipart/form-data" novalidate>
       <div class="mb-3 ">
         <label for="validationCustom01" class="form-label">Title</label>
         <input type="text" name="title" class="form-control width" id="validationCustom01" placeholder="Enter title"
           required>
+      </div>
+
+      <div class="mb-4 mt-4">
+        <input type="file" name="image" class=" width" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"
+          aria-label="Upload">
       </div>
 
       <div class="form-group">
@@ -68,8 +78,35 @@ if (isset($_POST['submit'])) {
             $active = 'No';
         }
 
+        // check if avatar is set
+        /*  print_r($_FILES['image']);
+
+         exit(); //break execution */
+
+        if (isset($_FILES['image']['name'])) {
+            // source path and destination path
+            $image_name = $_FILES['image']['name'];
+            $source_path = $_FILES['image']['tmp_name'];
+            $destination = '../images/category'.$image_name;
+
+            // upload img
+            $upload = move_uploaded_file($source_path, $destination);
+
+            // check if upload successful
+            if (false == $upload) {
+                $_SESSION['upload'] = '<div class="alert alert-danger" role="alert">Image upload failed. Try again!</div>';
+
+                header('Location: '.SITE_URL.'admin/add-category.php');
+
+                exit;
+            }
+        } else {
+            // upload fail and set img value = ''
+            $image_name = '';
+        }
+
         // insert to database
-        $sql = "INSERT INTO `category` (title, featured, active) VALUES ('{$title}','{$featured}','{$active}') ";
+        $sql = "INSERT INTO `category` (title, image_title, featured, active) VALUES ('{$title}','{$image_name}', '{$featured}','{$active}') ";
 
         $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
