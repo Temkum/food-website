@@ -9,6 +9,16 @@
             echo $_SESSION['category'];
             unset($_SESSION['category']);
         }
+
+        if (isset($_SESSION['remove'])) {
+            echo $_SESSION['remove'];
+            unset($_SESSION['remove']);
+        }
+
+        if (isset($_SESSION['delete'])) {
+            echo $_SESSION['delete'];
+            unset($_SESSION['delete']);
+        }
     ?>
 
     <!-- add category -->
@@ -73,7 +83,7 @@
           <td>
             <a href="<?php echo SITE_URL; ?>admin/update-category.php?id=<?php echo $id; ?>"
               class="btn btn-info btn-sm mx-2">Modify</a>
-            <a href="<?php echo SITE_URL; ?>admin/delete-category.php?id=<?php echo $id; ?>"
+            <a href="<?php echo SITE_URL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"
               class="btn btn-danger btn-sm mx-3">Remove</a>
           </td>
         </tr>

@@ -36,22 +36,22 @@
       <div class="form-group">
         <label for="validationCustom01" class="form-label ">Featured: </label>
         <div class="form-check form-check-inline mx-2">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes" name="featured">
+          <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured">
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline mb-4">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="No" name="featured">
+          <input class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="featured">
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>
         <br>
 
         <label for="validationCustom01" class="form-label">Active: </label>
         <div class="form-check form-check-inline mx-3">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes" name="active">
+          <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="active">
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="No" name="active">
+          <input class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="active">
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>
       </div>
@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
             // upload img
             $upload = move_uploaded_file($source_path, $destination);
 
-            // check if upload successful
+            // check if upload is OK
             if (false == $upload) {
                 $_SESSION['upload'] = '<div class="alert alert-danger" role="alert">Image upload failed. Try again!</div>';
 
