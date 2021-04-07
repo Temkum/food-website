@@ -4,7 +4,7 @@
 <div class="main-content">
   <div class="wrapper">
 
-    <h2 class="mb-4">Add Category</h2>
+    <h2 class="mb-3">Update Category</h2>
     <br>
     <!-- display error -->
     <?php
@@ -22,10 +22,18 @@
 
     <!-- add category -->
     <form method="POST" action="" class="needs-validation mb-3" enctype="multipart/form-data" novalidate>
-      <div class="mb-3 ">
+      <div class="mb-3">
         <label for="validationCustom01" class="form-label">Title</label>
         <input type="text" name="title" class="form-control width" id="validationCustom01" placeholder="Enter title"
           required>
+      </div>
+
+      <!-- display current img -->
+      <div>
+        <figure class="figure">
+          <img src="..." class="figure-img img-fluid rounded" alt="...">
+          <figcaption class="figure-caption text-end">Current Image</figcaption>
+        </figure>
       </div>
 
       <div class="mb-4 mt-4">
@@ -36,7 +44,8 @@
       <div class="form-group">
         <label for="validationCustom01" class="form-label ">Featured: </label>
         <div class="form-check form-check-inline mx-2">
-          <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured">
+          <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured"
+            for="validationCustom01">
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline mb-4">
@@ -56,7 +65,7 @@
         </div>
       </div>
       <br>
-      <button type="submit" name="submit" class="btn btn-primary">Add</button>
+      <button type="submit" name="submit" class="btn btn-primary">Update</button>
     </form>
 
     <?php
@@ -87,27 +96,24 @@ if (isset($_POST['submit'])) {
             // source path and destination path
             $image_name = $_FILES['image']['name'];
 
-            // for category update->upload image only if selected
-            if ('' != $image_name) {
-                // auto rename image
-                $extension = end(explode('.', $image_name));
-                // rename img
-                $image_name = 'Food-Category'.rand(000, 999).'.'.$extension;
+            // auto rename image
+            $extension = end(explode('.', $image_name));
+            // rename img
+            $image_name = 'Food-Category'.rand(000, 999).'.'.$extension;
 
-                $source_path = $_FILES['image']['tmp_name'];
-                $destination = '../images/category/'.$image_name;
+            $source_path = $_FILES['image']['tmp_name'];
+            $destination = '../images/category/'.$image_name;
 
-                // upload img
-                $upload = move_uploaded_file($source_path, $destination);
+            // upload img
+            $upload = move_uploaded_file($source_path, $destination);
 
-                // check if upload is OK
-                if (false == $upload) {
-                    $_SESSION['upload'] = '<div class="alert alert-danger" role="alert">Image upload failed. Try again!</div>';
+            // check if upload is OK
+            if (false == $upload) {
+                $_SESSION['upload'] = '<div class="alert alert-danger" role="alert">Image upload failed. Try again!</div>';
 
-                    header('Location: '.SITE_URL.'admin/add-category.php');
+                header('Location: '.SITE_URL.'admin/add-category.php');
 
-                    exit;
-                }
+                exit;
             }
         } else {
             // upload fail and set img value = ''
@@ -121,7 +127,7 @@ if (isset($_POST['submit'])) {
 
         if (true == $result) {
             // execute
-            $_SESSION['category'] = '<div class="alert alert-success" role="alert">Category added successfully!</div>';
+            $_SESSION['category'] = '<div class="alert alert-success" role="alert">Category updated successfully!</div>';
 
             header('Location: '.SITE_URL.'admin/manage-category.php');
 
