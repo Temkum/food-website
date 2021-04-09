@@ -6,7 +6,7 @@
     <h2 class="mb-4">Manage Food</h2>
 
     <!-- add category -->
-    <a class="btn btn-outline-primary mb-4" href="#" role="button">Add Food</a>
+    <a class="btn btn-outline-primary mb-4" href="<?php echo SITE_URL;?>admin/add-food.php" role="button">Add Food</a>
 
     <table class="table table-striped">
       <thead>
