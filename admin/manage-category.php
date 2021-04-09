@@ -19,6 +19,21 @@
             echo $_SESSION['delete'];
             unset($_SESSION['delete']);
         }
+
+        if (isset($_SESSION['update_category'])) {
+            echo $_SESSION['update_category'];
+            unset($_SESSION['update_category']);
+        }
+
+        if (isset($_SESSION['img_upload'])) {
+            echo $_SESSION['img_upload'];
+            unset($_SESSION['img_upload']);
+        }
+        
+        if (isset($_SESSION['img_remove'])) {
+            echo $_SESSION['img_remove'];
+            unset($_SESSION['img_remove']);
+        }
     ?>
 
     <!-- add category -->
@@ -92,7 +107,7 @@
         }
     } else {
         // echo 'No data available!';
-        echo '<div class="alert alert-danger" role="alert" >No data available!</div>';
+        echo '<div class="alert alert-info text-center width" role="alert" >No data available!</div>';
     }
 
 ?>

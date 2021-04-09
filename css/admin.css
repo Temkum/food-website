@@ -82,6 +82,17 @@
   width: 30%;
 }
 
+@media only screen and (max-width:425px) {
+  .input-group {
+    width: 90%;
+  }
+
+  .width {
+    width: 90%;
+  }
+
+}
+
 /* FOOTER */
 /* .footer {
   background-color: #ff4757;

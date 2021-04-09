@@ -6,7 +6,7 @@ session_start();
 
 define('WEBSITE_TITLE', 'Wangis Restaurant');
 
-define('SITE_URL', '/burgerfood/');
+define('SITE_URL', '/wangis/');
 
 // set db variables
 define('LOCALHOST', 'localhost');

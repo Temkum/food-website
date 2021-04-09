@@ -91,6 +91,7 @@ if (isset($_POST['submit'])) {
             if ('' != $image_name) {
                 // auto rename image
                 $extension = end(explode('.', $image_name));
+                
                 // rename img
                 $image_name = 'Food-Category'.rand(000, 999).'.'.$extension;
 
