@@ -4,9 +4,17 @@
 <div class="main-content">
   <div class="wrapper">
     <h2 class="mb-4">Manage Food</h2>
+    <br>
+    
+    <?php
+    if (isset($_SESSION['add-food'])) {
+      echo $_SESSION['add-food'];
+      unset($_SESSION['add-food']);
+    }
+    ?>
 
     <!-- add category -->
-    <a class="btn btn-outline-primary mb-4" href="<?php echo SITE_URL;?>admin/add-food.php" role="button">Add Food</a>
+    <a class="btn btn-outline-primary mb-4" href="<?php echo SITE_URL; ?>admin/add-food.php" role="button">Add Food</a>
 
     <table class="table table-striped">
       <thead>

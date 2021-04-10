@@ -5,6 +5,15 @@
     <h2>Add Food</h2>
     <br>
 
+    <!-- display error -->
+    <?php
+    if (isset($_SESSION['upload'])) {
+      echo $_SESSION['upload'];
+      unset($_SESSION['upload']);
+    }
+
+    ?>
+
     <form action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
 
       <div class="input-group mb-3 width-6">
@@ -23,16 +32,13 @@
       </div>
 
       <div class="mb-4 mt-4 width-6">
-        <input type="file" name="image" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" required>
+        <input type="file" name="image" class="" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" required>
       </div>
 
       <div class="btn-group mb-3">
         <span class="input-group-text">Categories</span>
-        <!-- <button type="button" class="btn btn-outline-secondary" disabled></button> -->
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="visually-hidden">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu">
+
+        <select name="category" id="" class="form-select form-select-sm ms-4">
           <?php
           // create query to display data from database
           $sql = "SELECT * FROM category WHERE active='Yes'";
@@ -49,9 +55,8 @@
               $id = $row['id'];
               $title = $row['title'];
           ?>
-              <li>
-                <option class="dropdown-item" value="<?php echo $id; ?>"> <?php echo $title; ?></option>
-              </li>
+              <option class="dropdown-item" value="<?php echo $id; ?>"><?php echo $title; ?>
+              </option>
 
             <?php
 
@@ -59,22 +64,21 @@
           } else {
             // no categories
             ?>
-            <li><a class="dropdown-item" href="#" value="0">No categories found!</a></li>
+            <option value="0">No categories found!</option>
           <?php
           }
 
           // display on dropdown
 
           ?>
-
+        </select>
+        <!-- 
           <li><a class="dropdown-item" href="#">Pizza</a></li>
           <li><a class="dropdown-item" href="#">Snacks</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="#">Local Cuisine</a></li>
-        </ul>
-
+          <li><a class="dropdown-item" href="#">Local Cuisine</a></li> -->
       </div>
 
       <div class="form-group">
@@ -102,6 +106,80 @@
       <br>
       <button type="submit" name="submit" class="btn btn-primary">Add</button>
     </form>
+
+    <?php
+    if (isset($_POST['submit'])) {
+      # add food to database
+
+      // get form data
+      $title = $_POST['title'];
+      $description = $_POST['description'];
+      $price = $_POST['price'];
+      $category = $_POST['category'];
+
+      // check radio btns
+      if (isset($_POST['featured'])) {
+        $featured = $_POST['featured'];
+      } else {
+        $featured = 'No';
+      }
+
+      if (isset($_POST['active'])) {
+        $active = $_POST['active'];
+      } else {
+        $active = 'No';
+      }
+
+      // upload img if selected & upload only if img is selected
+      if (isset($_FILES['image']['name'])) {
+        $img_name = $_FILES['image']['name'];
+
+        if ($img_name != '') {
+          # img is selected
+          $ext = end(explode('.', $img_name));
+
+          // create new img name
+          $img_name = 'Food-Name-' . rand(000, 999) . '.' . $ext;
+
+          $source_path = $_FILES['image']['tmp_name'];
+          $destination = '../images/food/' . $img_name;
+
+          // upload img
+          $upload = move_uploaded_file($source_path, $destination);
+
+          // check if upload is OK
+          if ($upload == false) {
+            $_SESSION['upload'] = '<div class="alert alert-danger" role="alert">Image upload failed. Try again!</div>';
+
+            header('Location: ' . SITE_URL . 'admin/add-category.php');
+
+            exit; //prevent insert into db if upload fails
+          }
+        }
+      } else {
+        $img_name = ''; //default value
+      }
+
+      // insert to db
+      $sql_insert = "INSERT INTO `food` (title, description, price, image_name, category_id, featured, active) VALUES ('$title', '$description', $price, '$img_name', $category, '$featured', '$active') ";
+
+      $result2 = mysqli_query($conn, $sql_insert) or exit(mysqli_error($conn));
+
+      // execute
+      if ($result2 == true) {
+        $_SESSION['add-food'] = '<div class="alert alert-success width" role="alert">Food added successfully!</div>';
+
+        header('Location: ' . SITE_URL . 'admin/manage-food.php');
+
+        exit;
+      } else {
+        // failed
+        $_SESSION['add-food'] = '<div class="alert alert-danger" role="alert">Oops! Something went wrong. Try again!</div>';
+
+        header('Location: ' . SITE_URL . 'admin/add-food.php');
+      }
+    }
+    ?>
 
     <!-- back btn -->
     <a class="text-center btn-sm btn btn-outline-secondary my-5" href="<?php echo SITE_URL; ?>admin/manage-food.php" role="button">Back to Manage Food</a>
