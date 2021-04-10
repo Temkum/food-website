@@ -26,13 +26,47 @@
         <input type="file" name="image" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" required>
       </div>
 
-      <div class="input-group mb-3 width-6">
-        <button type="button" class="btn btn-outline-secondary">Category</button>
+      <div class="btn-group mb-3">
+        <span class="input-group-text">Categories</span>
+        <!-- <button type="button" class="btn btn-outline-secondary" disabled></button> -->
         <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
           <span class="visually-hidden">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Burger</a></li>
+          <?php
+          // create query to display data from database
+          $sql = "SELECT * FROM category WHERE active='Yes'";
+
+          $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+
+          // check if categories exist
+          $count = mysqli_num_rows($result);
+
+          if ($count > 0) {
+
+            while ($row = mysqli_fetch_assoc($result)) {
+              # get details of category
+              $id = $row['id'];
+              $title = $row['title'];
+          ?>
+              <li>
+                <option class="dropdown-item" value="<?php echo $id; ?>"> <?php echo $title; ?></option>
+              </li>
+
+            <?php
+
+            }
+          } else {
+            // no categories
+            ?>
+            <li><a class="dropdown-item" href="#" value="0">No categories found!</a></li>
+          <?php
+          }
+
+          // display on dropdown
+
+          ?>
+
           <li><a class="dropdown-item" href="#">Pizza</a></li>
           <li><a class="dropdown-item" href="#">Snacks</a></li>
           <li>
@@ -40,7 +74,7 @@
           </li>
           <li><a class="dropdown-item" href="#">Local Cuisine</a></li>
         </ul>
-        <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" required>
+
       </div>
 
       <div class="form-group">
@@ -70,7 +104,7 @@
     </form>
 
     <!-- back btn -->
-    <a class="text-center btn btn-outline-secondary my-5" href="<?php echo SITE_URL; ?>admin/manage-category.php" role="button">Back to Manage Food</a>
+    <a class="text-center btn-sm btn btn-outline-secondary my-5" href="<?php echo SITE_URL; ?>admin/manage-food.php" role="button">Back to Manage Food</a>
   </div>
 
 

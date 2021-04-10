@@ -157,7 +157,6 @@
               exit;
             }
           }
-
         } else {
           $image_name = $current_image;
         }
@@ -178,7 +177,6 @@
         header('Location: ' . SITE_URL . 'admin/manage-category.php');
 
         exit;
-
       } else {
         $_SESSION['update_category'] = '<div class="alert alert-danger" role="alert">Failed to update category!</div>';
 
