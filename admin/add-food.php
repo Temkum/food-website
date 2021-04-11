@@ -1,20 +1,16 @@
 <?php include 'inc/topbar.php'; ?>
-
 <div class="main-content">
   <div class="wrapper">
     <h2>Add Food</h2>
+    <!-- display msgs -->
     <br>
-
-    <!-- display error -->
     <?php
     if (isset($_SESSION['upload'])) {
       echo $_SESSION['upload'];
       unset($_SESSION['upload']);
     }
-
     ?>
-
-    <form action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <form action="" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
 
       <div class="input-group mb-3 width-6">
         <span class="input-group-text" id="basic-addon1">Title</span>
@@ -32,7 +28,7 @@
       </div>
 
       <div class="mb-4 mt-4 width-6">
-        <input type="file" name="image" class="" id="inputGroupFile03 validationCustom04" aria-describedby="inputGroupFileAddon03" aria-label="Upload" required>
+        <input type="file" name="image" class="" id="inputGroupFile03 validationCustom04" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
         <div class="invalid-feedback">Please add a file!</div>
       </div>
 
@@ -58,17 +54,13 @@
           ?>
               <option class="dropdown-item" value="<?php echo $id; ?>"><?php echo $title; ?>
               </option>
-
             <?php
-
             }
           } else {
-            // no categories
             ?>
             <option value="0">No categories found!</option>
           <?php
           }
-          // display on dropdown
           ?>
         </select>
       </div>
@@ -96,13 +88,12 @@
         </div>
       </div>
       <br>
+
       <button type="submit" name="submit" class="btn btn-primary">Add</button>
     </form>
-
     <?php
     if (isset($_POST['submit'])) {
       # add food to database
-
       // get form data
       $title = $_POST['title'];
       $description = $_POST['description'];
@@ -128,10 +119,10 @@
 
         if ($img_name != '') {
           # img is selected
-          $ext = end(explode('.', $img_name));
+          $extension = @end(explode(".", $img_name));
 
           // create new img name
-          $img_name = 'Food-Name-' . rand(000, 999) . '.' . $ext;
+          $img_name = 'Food-Name-' . rand(000, 999) . '.' . $extension;
 
           $source_path = $_FILES['image']['tmp_name'];
           $destination = '../images/food/' . $img_name;
@@ -141,9 +132,10 @@
 
           // check if upload is OK
           if ($upload == false) {
+            // img upload failed
             $_SESSION['upload'] = '<div class="alert alert-danger" role="alert">Image upload failed. Try again!</div>';
 
-            header('Location: ' . SITE_URL . 'admin/add-food.php');
+            // header('Location: ' . SITE_URL . 'admin/add-food.php');
 
             exit; //prevent insert into db if upload fails
           }
@@ -151,7 +143,6 @@
       } else {
         $img_name = ''; //default value
       }
-
       // insert to db
       $sql_insert = "INSERT INTO `food` (title, description, price, image_name, category_id, featured, active) VALUES ('$title', '$description', '$price', '$img_name', '$category', '$featured', '$active') ";
 
@@ -159,23 +150,22 @@
 
       // execute
       if ($result2 == true) {
+        // insert successful
         $_SESSION['add-food'] = '<div class="alert alert-success width" role="alert">Food added successfully!</div>';
 
-        header('Location: ' . SITE_URL . 'admin/manage-food.php');
+        header("Location: " . SITE_URL . "admin/manage-food.php");
+        exit;
       } else {
         // failed
         $_SESSION['add-food'] = '<div class="alert alert-danger" role="alert">Oops! Something went wrong. Try again!</div>';
 
-        header('Location: ' . SITE_URL . 'admin/add-food.php');
+        header('Location: ' . SITE_URL . 'admin/manage-food.php');
       }
     }
     ?>
-
     <!-- back btn -->
     <a class="text-center btn-sm btn btn-outline-secondary my-5" href="<?php echo SITE_URL; ?>admin/manage-food.php" role="button">Back to Manage Food</a>
   </div>
-
-
 </div>
 </div>
 

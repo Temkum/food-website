@@ -7,10 +7,7 @@
     <br>
 
     <?php
-    if (isset($_SESSION['add-food'])) {
-      echo $_SESSION['add-food'];
-      unset($_SESSION['add-food']);
-    }
+
 
     if (isset($_SESSION['delete'])) {
       echo $_SESSION['delete'];
@@ -25,6 +22,11 @@
     if (isset($_SESSION['auth'])) {
       echo $_SESSION['auth'];
       unset($_SESSION['auth']);
+    }
+
+    if (isset($_SESSION['add-food'])) {
+      echo $_SESSION['add-food'];
+      unset($_SESSION['add-food']);
     }
     ?>
 
@@ -73,16 +75,13 @@
                   // check if img exist
                   if ($image_name == '') {
                     # code...
-                    echo '<td class="text-center">No image added!</td>';
+                    echo 'No image added!';
                   } else {
                     # display img
                   ?>
                   <img src="<?php echo SITE_URL; ?>images/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" width="200" height="100">
                 <?php
-
                   }
-
-
                 ?>
               </td>
               <td><?php echo $featured; ?></td>
