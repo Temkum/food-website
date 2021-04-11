@@ -32,7 +32,8 @@
       </div>
 
       <div class="mb-4 mt-4 width-6">
-        <input type="file" name="image" class="" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" required>
+        <input type="file" name="image" class="" id="inputGroupFile03 validationCustom04" aria-describedby="inputGroupFileAddon03" aria-label="Upload" required>
+        <div class="invalid-feedback">Please add a file!</div>
       </div>
 
       <div class="btn-group mb-3">
@@ -67,39 +68,30 @@
             <option value="0">No categories found!</option>
           <?php
           }
-
           // display on dropdown
-
           ?>
         </select>
-        <!-- 
-          <li><a class="dropdown-item" href="#">Pizza</a></li>
-          <li><a class="dropdown-item" href="#">Snacks</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="#">Local Cuisine</a></li> -->
       </div>
 
       <div class="form-group">
         <label for="validationCustom01" class="form-label">Featured: </label>
         <div class="form-check form-check-inline mx-2">
-          <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured">
+          <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured" required>
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline mb-4">
-          <input class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="featured">
+          <input class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="featured" required>
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>
         <br>
 
         <label for="validationCustom01" class="form-label">Active: </label>
         <div class="form-check form-check-inline mx-3">
-          <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="active">
+          <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="active" required>
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="active">
+          <input class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="active" required>
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>
       </div>
@@ -161,7 +153,7 @@
       }
 
       // insert to db
-      $sql_insert = "INSERT INTO `food` (title, description, price, image_name, category_id, featured, active) VALUES ('$title', '$description', $price, '$img_name', $category, '$featured', '$active') ";
+      $sql_insert = "INSERT INTO `food` (title, description, price, image_name, category_id, featured, active) VALUES ('$title', '$description', '$price', '$img_name', '$category', '$featured', '$active') ";
 
       $result2 = mysqli_query($conn, $sql_insert) or exit(mysqli_error($conn));
 
@@ -170,8 +162,6 @@
         $_SESSION['add-food'] = '<div class="alert alert-success width" role="alert">Food added successfully!</div>';
 
         header('Location: ' . SITE_URL . 'admin/manage-food.php');
-
-        exit;
       } else {
         // failed
         $_SESSION['add-food'] = '<div class="alert alert-danger" role="alert">Oops! Something went wrong. Try again!</div>';
