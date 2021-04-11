@@ -11,6 +11,21 @@
       echo $_SESSION['add-food'];
       unset($_SESSION['add-food']);
     }
+
+    if (isset($_SESSION['delete'])) {
+      echo $_SESSION['delete'];
+      unset($_SESSION['delete']);
+    }
+
+    if (isset($_SESSION['upload'])) {
+      echo $_SESSION['upload'];
+      unset($_SESSION['upload']);
+    }
+
+    if (isset($_SESSION['auth'])) {
+      echo $_SESSION['auth'];
+      unset($_SESSION['auth']);
+    }
     ?>
 
     <!-- add category -->
@@ -74,7 +89,7 @@
               <td><?php echo $active; ?></td>
               <td>
                 <a href="" class="btn btn-info btn-sm mx-2">Update</a>
-                <a href="" class="btn btn-danger btn-sm mx-3">Remove</a>
+                <a href="<?php echo SITE_URL; ?>admin/delete-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger btn-sm mx-3">Remove</a>
               </td>
             </tr>
       </tbody>
