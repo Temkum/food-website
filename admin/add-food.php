@@ -51,15 +51,11 @@
               # get details of category
               $id = $row['id'];
               $title = $row['title'];
-          ?>
-              <option class="dropdown-item" value="<?php echo $id; ?>"><?php echo $title; ?>
-              </option>
-            <?php
+
+              echo "<option class='dropdown-item' value='$id'>$title</option>";
             }
           } else {
-            ?>
-            <option value="0">No categories found!</option>
-          <?php
+            echo "<option value='0'>No categories found!</option>";
           }
           ?>
         </select>
