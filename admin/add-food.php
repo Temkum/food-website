@@ -135,7 +135,7 @@
             // img upload failed
             $_SESSION['upload'] = '<div class="alert alert-danger" role="alert">Image upload failed. Try again!</div>';
 
-            // header('Location: ' . SITE_URL . 'admin/add-food.php');
+            header('Location: ' . SITE_URL . 'admin/add-food.php');
 
             exit; //prevent insert into db if upload fails
           }

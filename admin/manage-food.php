@@ -7,8 +7,6 @@
     <br>
 
     <?php
-
-
     if (isset($_SESSION['delete'])) {
       echo $_SESSION['delete'];
       unset($_SESSION['delete']);
@@ -87,7 +85,7 @@
               <td><?php echo $featured; ?></td>
               <td><?php echo $active; ?></td>
               <td>
-                <a href="" class="btn btn-info btn-sm mx-2">Update</a>
+                <a href="<?php echo SITE_URL; ?>admin/update-food.php?id=<?php echo $id; ?>" class="btn btn-info btn-sm mx-2">Update</a>
                 <a href="<?php echo SITE_URL; ?>admin/delete-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger btn-sm mx-3">Remove</a>
               </td>
             </tr>
