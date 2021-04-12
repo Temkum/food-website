@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
 
   $read = "SELECT * FROM food WHERE id='$id' ";
 
-  $results = mysqli_query($conn, $read) or exit(mysqli_error($conn));
+  $results = $conn->query($read) or exit(mysqli_error($conn));
 
   // get value based on query
   $row2 = mysqli_fetch_assoc($results);
@@ -21,8 +21,8 @@ if (isset($_GET['id'])) {
   $featured = $row2['featured'];
   $active = $row2['active'];
 } else {
-
   header('Location:' . SITE_URL . 'admin/manage-food.php');
+  die();
 }
 ?>
 
@@ -53,26 +53,26 @@ if (isset($_GET['id'])) {
 
       <div>
         <?php
-        if ($current_image != '') {
-          // display current img
+        if ($current_image == '') {
+          // img N/A
+          echo '<div class="alert alert-warning width" role="alert">Image not added!</div>';
+        } else {
+          // fail msg
         ?>
           <figure class="figure">
             <img src="<?php echo SITE_URL; ?>images/food/<?php echo $current_image; ?>" class="figure-img img-fluid rounded" width="300px" height="300px" alt="<?php echo $title; ?>">
             <figcaption class="figure-caption text-end">Current Image</figcaption>
           </figure>
-
         <?php
-        } else {
-          // fail msg
-          echo '<div class="alert alert-warning width" role="alert">Image not added!</div>';
         }
         ?>
       </div>
 
-      <div class="mb-4 mt-4 width-6">
-        <input type="file" name="image" class="" id="inputGroupFile03 validationCustom04" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+      <div class="mb-4 mt-2 width-6 btn-group">
+        <label class="input-group-text">Select new image</label>
+        <input type="file" name="image" class="ms-3 mt-1" id="inputGroupFile03 validationCustom04" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
         <div class="invalid-feedback">Please add a file!</div>
-      </div>
+      </div> <br>
 
       <div class="btn-group mb-3">
         <span class="input-group-text">Categories</span>
@@ -80,7 +80,7 @@ if (isset($_GET['id'])) {
 
           <?php
           $sql = "SELECT * FROM category WHERE active='Yes' ";
-          $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+          $result = $conn->query($sql) or exit(mysqli_error($conn));
 
           $count = mysqli_num_rows($result);
           if ($count > 0) {
@@ -88,11 +88,12 @@ if (isset($_GET['id'])) {
             while ($row = mysqli_fetch_assoc($result)) {
               # code...
               $category_title = $row['title'];
-              $category_id = $row['id']; ?>
-
+              $category_id = $row['id'];
+          ?>
               <option <?php if ($current_category == $category_id) {
                         echo 'selected';
-                      } ?>value='<?php echo $category_id; ?>'><?php echo $category_title; ?>
+                      }
+                      ?> value="<?php echo $category_id; ?>"><?php echo $category_title; ?>
               </option>
 
           <?php
@@ -100,8 +101,8 @@ if (isset($_GET['id'])) {
           } else {
             # code...
             echo "<option value='0'>No categories found!</option>";
-          } ?>
-
+          }
+          ?>
           <option value="0">Test</option>
         </select>
       </div>
@@ -111,13 +112,15 @@ if (isset($_GET['id'])) {
         <div class="form-check form-check-inline mx-2">
           <input <?php if ('Yes' == $featured) {
                     echo 'checked';
-                  } ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured" required>
+                  }
+                  ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured" required>
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline mb-4">
           <input <?php if ('No' == $featured) {
                     echo 'checked';
-                  } ?> class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="featured" required>
+                  }
+                  ?> class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="featured" required>
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>
         <br>
@@ -125,13 +128,15 @@ if (isset($_GET['id'])) {
         <div class="form-check form-check-inline mx-3">
           <input <?php if ('Yes' == $active) {
                     echo 'checked';
-                  } ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="active" required>
+                  }
+                  ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="active" required>
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline">
           <input <?php if ('No' == $active) {
                     echo 'checked';
-                  } ?> class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="active" required>
+                  }
+                  ?> class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="active" required>
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>
       </div>
@@ -194,6 +199,8 @@ if (isset($_GET['id'])) {
               header('Location:' . SITE_URL . 'admin/manage-food.php');
             }
           }
+        } else {
+          $img_name = $current_image;
         }
       } else {
         $img_name = $current_image; //default value
@@ -218,8 +225,6 @@ if (isset($_GET['id'])) {
 
         header('Location: ' . SITE_URL . 'admin/manage-food.php');
       }
-    } else {
-      # code...
     }
     ?>
   </div>
