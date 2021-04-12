@@ -23,7 +23,6 @@ if (isset($_GET['id'])) {
 } else {
 
   header('Location:' . SITE_URL . 'admin/manage-food.php');
-  exit;
 }
 ?>
 
@@ -193,7 +192,6 @@ if (isset($_GET['id'])) {
               $_SESSION['remove_failed'] = '<div class="alert alert-danger" role="alert">Failed to remove image. Try again!</div>';
 
               header('Location:' . SITE_URL . 'admin/manage-food.php');
-              exit;
             }
           }
         }
@@ -219,8 +217,6 @@ if (isset($_GET['id'])) {
         $_SESSION['add-food'] = '<div class="alert alert-danger" role="alert">Oops! Something went wrong. Try again!</div>';
 
         header('Location: ' . SITE_URL . 'admin/manage-food.php');
-
-        exit;
       }
     } else {
       # code...

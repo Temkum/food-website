@@ -16,7 +16,7 @@ define('DB_NAME', 'food_order');
 define('PROTOCOL', 'http');
 
 // Create connection
-$conn = new mysqli('localhost', 'root', 'loveisall21', 'food_order');
+$conn = new mysqli(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 // Check connection
 if ($conn->connect_error) {
