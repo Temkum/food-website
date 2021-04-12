@@ -1,9 +1,7 @@
 <?php
-
 session_start();
 
 // set your website title
-
 define('WEBSITE_TITLE', 'Wangis Restaurant');
 
 define('SITE_URL', '/wangis/');
@@ -17,10 +15,10 @@ define('DB_NAME', 'food_order');
 // protocol type http or https
 define('PROTOCOL', 'http');
 
- // Create connection
- $conn = new mysqli('localhost', 'root', 'loveisall21', 'food_order');
+// Create connection
+$conn = new mysqli('localhost', 'root', 'loveisall21', 'food_order');
 
- // Check connection
- if ($conn->connect_error) {
-     exit('Connection failed: '.$conn->connect_error);
- }
+// Check connection
+if ($conn->connect_error) {
+    exit('Connection failed: ' . $conn->connect_error);
+}

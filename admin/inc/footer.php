@@ -1,7 +1,7 @@
  <!-- FOOTER -->
  <div class="footer">
    <div class="wrapper">
-     <p class="text-center">Copyright 2021. All Rights Reserved by BurgerFood.</p>
+     <p class="text-center">Copyright 2021. All Rights Reserved by Wangis.</p>
    </div>
  </div>
 

@@ -1,8 +1,7 @@
 <?php
-
 include '../core/config.php';
 
-if (isset($_GET['id']) && isset($_GET['image_name'])) {
+if (isset($_GET['id']) and isset($_GET['image_name'])) {
   // get id and img name
   $id = $_GET['id'];
   $image_name = $_GET['image_name'];
@@ -24,6 +23,7 @@ if (isset($_GET['id']) && isset($_GET['image_name'])) {
 
     }
   }
+
   // delete food from db
   $sql = "DELETE FROM food WHERE id='$id' ";
   $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
@@ -33,8 +33,10 @@ if (isset($_GET['id']) && isset($_GET['image_name'])) {
     $_SESSION['delete'] = '<div class="alert alert-success text-center" role="alert">Food removed successfully!</div>';
 
     header('Location: ' . SITE_URL . 'admin/manage-food.php');
+    exit;
   } else {
     $_SESSION['delete'] = '<div class="alert alert-alert text-center" role="alert">Oops! Failed to delete food!</div>';
+    exit;
   }
 } else {
   $_SESSION['auth'] = '<div class="alert alert-danger text-center" role="alert">Unauthorized access!</div>';
