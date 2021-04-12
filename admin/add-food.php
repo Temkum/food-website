@@ -1,6 +1,10 @@
 <?php include 'inc/topbar.php'; ?>
-<div class="main-content">
+
+<div class="main-content p-0">
   <div class="wrapper">
+    <!-- back btn -->
+    <a class="text-center btn-sm btn btn-outline-secondary mb-5" href="<?php echo SITE_URL; ?>admin/manage-food.php" role="button">Back to Manage Food</a>
+
     <h2>Add Food</h2>
     <!-- display msgs -->
     <br>
@@ -10,6 +14,7 @@
       unset($_SESSION['upload']);
     }
     ?>
+
     <form action="" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
 
       <div class="input-group mb-3 width-6">
@@ -87,6 +92,7 @@
 
       <button type="submit" name="submit" class="btn btn-primary">Add</button>
     </form>
+
     <?php
     if (isset($_POST['submit'])) {
       # add food to database
@@ -139,6 +145,7 @@
       } else {
         $img_name = ''; //default value
       }
+
       // insert to db
       $sql_insert = "INSERT INTO `food` (title, description, price, image_name, category_id, featured, active) VALUES ('$title', '$description', '$price', '$img_name', '$category', '$featured', '$active') ";
 
@@ -159,12 +166,8 @@
       }
     }
     ?>
-    <!-- back btn -->
-    <a class="text-center btn-sm btn btn-outline-secondary my-5" href="<?php echo SITE_URL; ?>admin/manage-food.php" role="button">Back to Manage Food</a>
   </div>
 </div>
 </div>
-
-
 
 <?php include 'inc/footer.php';

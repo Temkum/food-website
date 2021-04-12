@@ -23,13 +23,14 @@ if (isset($_GET['id'])) {
 } else {
 
   header('Location:' . SITE_URL . 'admin/manage-food.php');
+  exit;
 }
-
 ?>
 
-<!-- MAIN SECTION -->
-<div class="main-content">
+<div class="main-content p-0">
   <div class="wrapper">
+
+    <a class="text-center btn btn-outline-secondary btn-sm mb-5" href="<?php echo SITE_URL; ?>admin/manage-food.php" role="button">Back</a>
 
     <h2 class="mb-3">Update Food</h2>
     <br>
@@ -51,15 +52,16 @@ if (isset($_GET['id'])) {
         <input type="number" name="price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" value="<?php echo $price; ?>" required>
       </div>
 
-      <!-- display current img -->
       <div>
-        <?php if ($current_image != '') {
-          // display img
+        <?php
+        if ($current_image != '') {
+          // display current img
         ?>
           <figure class="figure">
             <img src="<?php echo SITE_URL; ?>images/food/<?php echo $current_image; ?>" class="figure-img img-fluid rounded" width="300px" height="300px" alt="<?php echo $title; ?>">
             <figcaption class="figure-caption text-end">Current Image</figcaption>
           </figure>
+
         <?php
         } else {
           // fail msg
@@ -76,6 +78,7 @@ if (isset($_GET['id'])) {
       <div class="btn-group mb-3">
         <span class="input-group-text">Categories</span>
         <select name="category" id="" class="form-select form-select-sm ms-2">
+
           <?php
           $sql = "SELECT * FROM category WHERE active='Yes' ";
           $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
@@ -86,20 +89,20 @@ if (isset($_GET['id'])) {
             while ($row = mysqli_fetch_assoc($result)) {
               # code...
               $category_title = $row['title'];
-              $category_id = $row['id'];
+              $category_id = $row['id']; ?>
 
-              // echo "<option value='$category_id'>$category_title</option>";
-          ?>
               <option <?php if ($current_category == $category_id) {
                         echo 'selected';
-                      } ?> value='<?php echo $category_id; ?>'><?php echo $category_title; ?></option>
+                      } ?>value='<?php echo $category_id; ?>'><?php echo $category_title; ?>
+              </option>
+
           <?php
             }
           } else {
             # code...
             echo "<option value='0'>No categories found!</option>";
-          }
-          ?>
+          } ?>
+
           <option value="0">Test</option>
         </select>
       </div>
@@ -107,11 +110,9 @@ if (isset($_GET['id'])) {
       <div class="form-group">
         <label for="validationCustom01" class="form-label">Featured: </label>
         <div class="form-check form-check-inline mx-2">
-          <input <?php
-                  if ('Yes' == $featured) {
+          <input <?php if ('Yes' == $featured) {
                     echo 'checked';
-                  }
-                  ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured" required>
+                  } ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured" required>
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline mb-4">
@@ -121,7 +122,6 @@ if (isset($_GET['id'])) {
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>
         <br>
-
         <label for="validationCustom01" class="form-label">Active: </label>
         <div class="form-check form-check-inline mx-3">
           <input <?php if ('Yes' == $active) {
@@ -138,11 +138,94 @@ if (isset($_GET['id'])) {
       </div>
       <br>
 
+      <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
       <button type="submit" name="submit" class="btn btn-primary">Update</button>
     </form>
 
-    <!-- back btn -->
-    <a class="text-center btn btn-outline-secondary my-4 btn-sm" href="<?php echo SITE_URL; ?>admin/manage-food.php" role="button">Back to Manage Food</a>
+    <?php
+    if (isset($_POST['submit'])) {
+      # get form details
+      $id = $_POST['id'];
+      $title = $_POST['title'];
+      $description = $_POST['description'];
+      $price = $_POST['price'];
+      $current_image = $_POST['current_image'];
+      $category = $_POST['category'];
+      $featured = $_POST['featured'];
+      $active = $_POST['active'];
+
+      // upload img if selected
+      #event listener
+      if (isset($_POST['image']['name'])) {
+        $img_name = $_FILES['image']['name'];
+
+        if ($img_name != '') {
+          # img is selected
+          $extension = @end(explode(".", $img_name));
+
+          // create new img name
+          $img_name = 'Food-Name-' . rand(000, 999) . '.' . $extension;
+
+          $source_path = $_FILES['image']['tmp_name'];
+          $destination = '../images/food/' . $img_name;
+
+          // upload img
+          $upload = move_uploaded_file($source_path, $destination);
+
+          // check if upload is OK
+          if ($upload == false) {
+            // img upload failed
+            $_SESSION['upload'] = '<div class="alert alert-danger" role="alert">Image upload failed. Try again!</div>';
+
+            header('Location: ' . SITE_URL . 'admin/manage-food.php');
+            exit; //prevent insert into db if upload fails
+          }
+
+          // remove current img if new img is uploaded
+          if ($current_image != '') {
+            // remove img
+            $remove_path = "../images/food/" . $current_image;
+            $remove = unlink($remove_path);
+
+            if ($remove == false) {
+              # failed
+              $_SESSION['remove_failed'] = '<div class="alert alert-danger" role="alert">Failed to remove image. Try again!</div>';
+
+              header('Location:' . SITE_URL . 'admin/manage-food.php');
+              exit;
+            }
+          }
+        }
+      } else {
+        $img_name = $current_image; //default value
+      }
+
+      // update food and insert food in db
+      $sql_insert = "INSERT INTO `food` (title, description, price, image_name, category_id, featured, active) VALUES ('$title', '$description', '$price', '$current_image', '$category', '$featured', '$active') ";
+
+      $result2 = mysqli_query($conn, $sql_insert) or exit(mysqli_error($conn));
+
+      // execute
+      if ($result2 == true) {
+        // insert successful
+        $_SESSION['add-food'] = '<div class="alert alert-success width" role="alert">Food added successfully!</div>';
+
+        header("Location: " . SITE_URL . "admin/manage-food.php");
+
+        exit;
+      } else {
+        // failed
+        $_SESSION['add-food'] = '<div class="alert alert-danger" role="alert">Oops! Something went wrong. Try again!</div>';
+
+        header('Location: ' . SITE_URL . 'admin/manage-food.php');
+
+        exit;
+      }
+    } else {
+      # code...
+    }
+    ?>
   </div>
 </div>
 
