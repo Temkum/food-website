@@ -95,7 +95,7 @@
                             echo '<div class="alert alert-danger" role="alert">Image not available!</div>';
                         } else {
                         ?>
-                            <img src="<?php echo SITE_URL; ?>images/food/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                            <img src="<?php echo SITE_URL; ?>images/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" class="img-responsive img-curve">
 
 
                         <?php
@@ -110,7 +110,7 @@
                         <p class="food-detail"><?php echo $description; ?></p>
                         <br>
 
-                        <a href="order.html" class="btn btn-primary">Order Now</a>
+                        <a href="<?php echo SITE_URL; ?>order.php?food_id=<?php echo $id;?>" class="btn btn-primary">Order Now</a>
                     </div>
                 </div>
         <?php
