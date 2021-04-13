@@ -30,13 +30,13 @@ if (isset($_GET['food_id'])) {
 
 ?>
 
-<!-- FOOD SEARCH -->
+<!-- ORDER FOOD -->
 <section class="food-search">
     <div class="container">
 
         <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
 
-        <form action="#" class="order">
+        <form action="" class="order" method="POST">
             <fieldset>
                 <legend>Selected Food</legend>
 
@@ -58,7 +58,10 @@ if (isset($_GET['food_id'])) {
 
                 <div class="food-menu-desc">
                     <h3><?php echo $title; ?></h3>
+                    <input type="hidden" name="food" value="<?php echo $title; ?>">
+
                     <p class="food-price">$<?php echo $price; ?></p>
+                    <input type="hidden" name="price" value="<?php echo $price; ?>">
 
                     <div class="order-label">Quantity</div>
                     <input type="number" name="qty" class="input-responsive" value="1" required>
@@ -70,21 +73,60 @@ if (isset($_GET['food_id'])) {
             <fieldset>
                 <legend>Delivery Details</legend>
                 <div class="order-label">Full Name</div>
-                <input type="text" name="full-name" placeholder="E.g. Vijay Thapa" class="input-responsive" required>
+                <input type="text" name="full-name" placeholder="E.g. Kum Jude" class="input-responsive" required>
 
                 <div class="order-label">Phone Number</div>
-                <input type="tel" name="contact" placeholder="E.g. 9843xxxxxx" class="input-responsive" required>
+                <input type="tel" name="contact" placeholder="E.g. 237 675-827-455" class="input-responsive" required>
 
                 <div class="order-label">Email</div>
-                <input type="email" name="email" placeholder="E.g. hi@vijaythapa.com" class="input-responsive" required>
+                <input type="email" name="email" placeholder="E.g. judekum14@gmail.com" class="input-responsive" required>
 
                 <div class="order-label">Address</div>
                 <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
 
                 <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
             </fieldset>
-
         </form>
+
+        <?php
+        //submit event
+        if (isset($_POST['submit'])) {
+            # code...
+            $food = $_POST['food'];
+            $price = $_POST['price'];
+            $quantity = $_POST['qty'];
+
+            $total = $price * $quantity;
+
+            $order_date = date("Y-m-d h:i:sa");
+
+            $status = 'Ordered'; // ordered, processing, delivered, cancelled
+
+            $customer_name = $_POST['full-name'];
+            $customer_contact = $_POST['contact'];
+            $customer_email = $_POST['email'];
+            $customer_address = $_POST['address'];
+
+            // save to db
+            $sql2 = "INSERT INTO order_table (food, price, qty, total, order_date, status, customer_name, customer_contact, customer_email, customer_address) VALUES ('$food', '$price', '$quantity', '$total', '$order_date', '$status', '$customer_name', '$customer_contact', '$customer_email', '$customer_address') ";
+
+            $result2 = $conn->query($sql2) or exit(mysqli_error($conn));
+
+            if ($result2 == true) {
+                # code...
+                $_SESSION['order'] = '<div class="success text-center width">Order placed successfully!</div>';
+
+                header('Location: ' . SITE_URL);
+                exit;
+            } else {
+                # failed to insert
+                $_SESSION['order'] = '<div class="error text-center width">Failed to order food!</div>';
+            }
+        } else {
+            # code...
+        }
+
+        ?>
 
     </div>
 </section>
