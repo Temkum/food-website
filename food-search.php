@@ -5,6 +5,7 @@
     <div class="container">
         <!-- display search keyword -->
         <?php
+        error_reporting(0);
         $search = $_POST['search'];
         ?>
         <h2>Foods on your search <a href="#" class="text-white">"<?php echo $search; ?>"</a></h2>
@@ -19,7 +20,7 @@
         $search = $_POST['search'];
 
         // query based on search keyword
-        $sql = "SELECT * FROM food WHERE title LIKE '%$search%' OR `description` LIKE '%search%' ";
+        $sql = "SELECT * FROM food WHERE title LIKE '%$search%' OR description LIKE '%$search%' ";
 
         $result = $conn->query($sql) or exit(mysqli_error($conn));
 
