@@ -22,7 +22,6 @@ if (isset($_GET['id'])) {
   $active = $row2['active'];
 } else {
   header('Location:' . SITE_URL . 'admin/manage-food.php');
-  die();
 }
 ?>
 
@@ -110,8 +109,8 @@ if (isset($_GET['id'])) {
       <div class="form-group">
         <label for="validationCustom01" class="form-label">Featured: </label>
         <div class="form-check form-check-inline mx-2">
-          <input <?php if ('Yes' == $featured) {
-                    echo 'checked';
+          <input <?php if ("Yes" == $featured) {
+                    echo "checked";
                   }
                   ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured" required>
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
@@ -148,6 +147,7 @@ if (isset($_GET['id'])) {
     </form>
 
     <?php
+    // error_reporting(0);
     if (isset($_POST['submit'])) {
       # get form details
       $id = $_POST['id'];
@@ -194,9 +194,10 @@ if (isset($_GET['id'])) {
 
             if ($remove == false) {
               # failed
-              $_SESSION['remove_failed'] = '<div class="alert alert-danger" role="alert">Failed to remove image. Try again!</div>';
+              $_SESSION['remove_failed'] = '<div class="alert alert-danger" role="alert">Failed to remove current image. Try again!</div>';
 
               header('Location:' . SITE_URL . 'admin/manage-food.php');
+              exit;
             }
           }
         } else {
@@ -207,17 +208,16 @@ if (isset($_GET['id'])) {
       }
 
       // update food and insert food in db
-      $sql_insert = "INSERT INTO `food` (title, description, price, image_name, category_id, featured, active) VALUES ('$title', '$description', '$price', '$current_image', '$category', '$featured', '$active') ";
+      $sql_update = "UPDATE `food` SET title='$title', description='$description', price='$price', image_name='$current_image', category_id='$category', featured='$featured', active='$active' WHERE id='$id' ";
 
-      $result2 = mysqli_query($conn, $sql_insert) or exit(mysqli_error($conn));
+      $result2 = mysqli_query($conn, $sql_update) or exit(mysqli_error($conn));
 
       // execute
       if ($result2 == true) {
-        // insert successful
-        $_SESSION['add-food'] = '<div class="alert alert-success width" role="alert">Food added successfully!</div>';
+        // update successful
+        $_SESSION['add-food'] = '<div class="alert alert-success width" role="alert">Food updated successfully!</div>';
 
         header("Location: " . SITE_URL . "admin/manage-food.php");
-
         exit;
       } else {
         // failed

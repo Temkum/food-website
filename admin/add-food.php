@@ -8,6 +8,7 @@
     <h2>Add Food</h2>
     <!-- display msgs -->
     <br>
+
     <?php
     if (isset($_SESSION['upload'])) {
       echo $_SESSION['upload'];
@@ -41,6 +42,7 @@
         <span class="input-group-text">Categories</span>
 
         <select name="category" id="" class="form-select form-select-sm ms-4">
+
           <?php
           // create query to display data from database
           $sql = "SELECT * FROM category WHERE active='Yes'";
@@ -56,13 +58,22 @@
               # get details of category
               $id = $row['id'];
               $title = $row['title'];
+          ?>
 
-              echo "<option class='dropdown-item' value='$id'>$title</option>";
+              <option class='dropdown-item' value="<?php echo $id; ?>"><?php echo $title ?></option>
+
+            <?php
             }
           } else {
-            echo "<option value='0'>No categories found!</option>";
+            ?>
+
+            <option value="0">No categories found!</option>
+
+          <?php
           }
+
           ?>
+
         </select>
       </div>
 
@@ -94,6 +105,7 @@
     </form>
 
     <?php
+
     if (isset($_POST['submit'])) {
       # add food to database
       // get form data
@@ -165,7 +177,9 @@
         header('Location: ' . SITE_URL . 'admin/manage-food.php');
       }
     }
+
     ?>
+
   </div>
 </div>
 </div>
