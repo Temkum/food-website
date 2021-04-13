@@ -1,6 +1,6 @@
 <?php include 'include/navbar.php'; ?>
 
-<!-- Food search Section Starts Here -->
+<!-- FOOD SEARCH -->
 <section class="food-search text-center">
     <div class="container">
 
@@ -34,7 +34,7 @@
                 $title = $row['title'];
                 $image_name = $row['image_title'];
         ?>
-                <a href="category-foods.html">
+                <a href="<?php echo SITE_URL; ?>category-foods.php?category_id=<?php echo $id; ?>">
                     <div class="box-3 float-container">
                         <?php
                         if ($image_name == "") {
