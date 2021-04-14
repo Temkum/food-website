@@ -1,9 +1,17 @@
-<?php include 'inc/topbar.php'; ?>
+l<?php include 'inc/topbar.php'; ?>
 
 <!-- MAIN SECTION -->
 <div class="main-content">
   <div class="wrapper">
     <h2 class="mb-4">Manage Orders</h2>
+
+    <?php
+    if (isset($_SESSION['update'])) {
+      echo $_SESSION['update'];
+      unset($_SESSION['update']);
+    }
+    ?>
+    <br>
 
     <!-- add category -->
     <a class="btn btn-outline-primary mb-4" href="#" role="button">Add Order</a>
@@ -61,7 +69,20 @@
               <td><?php echo $quantity; ?></td>
               <td><?php echo $total; ?></td>
               <td><?php echo $order_date; ?></td>
-              <td><?php echo $status; ?></td>
+              <!-- status changes -->
+              <td>
+                <?php if ($status == 'Ordered') {
+                  echo "<label>$status</label>";
+                } elseif ($status == 'Processing') {
+                  echo "<span class='text-warning alert-warning'> $status</span>";
+                } elseif ($status == 'Delivered') {
+                  echo "<label class='text-success alert-success'>$status</label>";
+                } elseif ($status == 'Cancelled') {
+                  echo "<label class='text-danger alert-danger'> $status</label>";
+                }
+                ?>
+              </td>
+
               <td><?php echo $customer_name; ?></td>
               <td><?php echo $customer_contact; ?></td>
               <td><?php echo $customer_email; ?></td>

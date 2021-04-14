@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+ob_start();
+
 // set your website title
 define('WEBSITE_TITLE', 'Wangis Restaurant');
 
