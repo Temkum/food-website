@@ -67,7 +67,7 @@
               <td><?php echo $customer_email; ?></td>
               <td><?php echo $customer_address; ?></td>
               <td>
-                <a href="" class="btn btn-info btn-sm mx-2">Update order</a>
+                <a href="<?php echo SITE_URL; ?>admin/update-order.php?id=<?php echo $id; ?>" class="btn btn-info btn-sm mx-2">Update order</a>
               </td>
             </tr>
         <?php
