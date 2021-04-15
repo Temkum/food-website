@@ -54,7 +54,7 @@ if (isset($_GET['id'])) {
         <?php
         if ($current_image == '') {
           // img N/A
-          echo '<div class="alert alert-warning width" role="alert">Image not added!</div>';
+          echo "<div class='alert alert-warning width' role='alert'>Image not added!</div>";
         } else {
           // fail msg
         ?>
@@ -90,7 +90,7 @@ if (isset($_GET['id'])) {
               $category_id = $row['id'];
           ?>
               <option <?php if ($current_category == $category_id) {
-                        echo 'selected';
+                        echo "selected";
                       }
                       ?> value="<?php echo $category_id; ?>"><?php echo $category_title; ?>
               </option>
@@ -117,7 +117,7 @@ if (isset($_GET['id'])) {
         </div>
         <div class="form-check form-check-inline mb-4">
           <input <?php if ('No' == $featured) {
-                    echo 'checked';
+                    echo "checked";
                   }
                   ?> class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="featured" required>
           <label class="form-check-label" for="inlineCheckbox2">No</label>
@@ -126,14 +126,14 @@ if (isset($_GET['id'])) {
         <label for="validationCustom01" class="form-label">Active: </label>
         <div class="form-check form-check-inline mx-3">
           <input <?php if ('Yes' == $active) {
-                    echo 'checked';
+                    echo "checked";
                   }
                   ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="active" required>
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline">
           <input <?php if ('No' == $active) {
-                    echo 'checked';
+                    echo "checked";
                   }
                   ?> class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="active" required>
           <label class="form-check-label" for="inlineCheckbox2">No</label>

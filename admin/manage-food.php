@@ -77,7 +77,7 @@
                   } else {
                     # display img
                   ?>
-                  <img src="<?php echo SITE_URL; ?>images/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" width="200" height="100">
+                  <img src="<?php echo SITE_URL; ?>images/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" width="100" height="100" class="thumbnail">
                 <?php
                   }
                 ?>

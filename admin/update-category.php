@@ -57,7 +57,7 @@
         <?php
         } else {
           // fail msg
-          echo '<div class="alert alert-warning width" role="alert">Image not added!</div>';
+          echo "<div class='alert alert-warning width' role='alert'>Image not added!</div>";
         }
         ?>
       </div>
@@ -70,13 +70,13 @@
         <label for="validationCustom01" class="form-label ">Featured: </label>
         <div class="form-check form-check-inline">
           <input <?php if ('Yes' == $featured) {
-                    echo 'checked';
+                    echo "checked";
                   } ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="featured" for="validationCustom01">
           <label class="form-check-label" for="inlineCheckbox2">Yes</label>
         </div>
         <div class="form-check form-check-inline mb-4">
           <input <?php if ('No' == $featured) {
-                    echo 'checked';
+                    echo "checked";
                   } ?> class="form-check-input" type="radio" id="" value="No" name="featured">
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>
@@ -85,13 +85,13 @@
         <label for="validationCustom01" class="form-label">Active: </label>
         <div class="form-check form-check-inline mx-3">
           <input <?php if ('Yes' == $active) {
-                    echo 'checked';
+                    echo "checked";
                   } ?> class="form-check-input" type="radio" id="inlineCheckbox1" value="Yes" name="active">
           <label class="form-check-label" for="inlineCheckbox1">Yes</label>
         </div>
         <div class="form-check form-check-inline">
           <input <?php if ('No' == $active) {
-                    echo 'checked';
+                    echo "checked";
                   } ?> class="form-check-input" type="radio" id="inlineCheckbox2" value="No" name="active">
           <label class="form-check-label" for="inlineCheckbox2">No</label>
         </div>

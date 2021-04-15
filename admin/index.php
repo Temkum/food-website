@@ -4,9 +4,9 @@ include 'inc/topbar.php';
 ?>
 
 <!-- MAIN SECTION -->
-<div class="main-content">
-  <div class="wrapper">
-    <h2>Dashboard</h2>
+<div class="main-content p-1">
+  <div class="wrapper mb-5">
+    <h1>Dashboard</h1>
 
     <?php
     if (isset($_SESSION['login'])) {

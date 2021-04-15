@@ -1,5 +1,5 @@
  <!-- FOOTER -->
- <div class="footer">
+ <div class="footer bottom">
    <div class="wrapper">
      <p class="text-center">Copyright 2021. All Rights Reserved by Wangis.</p>
    </div>

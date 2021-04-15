@@ -69,19 +69,19 @@
         <span class="input-group-text" id="inputGroup-sizing-sm">Status</span>
         <select class="form-select form-select-sm" name="status" aria-label=".form-select-sm example">
           <option <?php if ($status == 'Ordered') {
-                    echo 'selected';
+                    echo "selected";
                   } ?> value="Ordered">Ordered</option>
 
           <option <?php if ($status == 'Processing') {
-                    echo 'selected';
+                    echo "selected";
                   } ?> value="Processing">Processing</option>
 
           <option <?php if ($status == 'Delivered') {
-                    echo 'selected';
+                    echo "selected";
                   } ?> value="Delivered">Delivered</option>
 
           <option <?php if ($status == 'Cancelled') {
-                    echo 'selected';
+                    echo "selected";
                   } ?> value="Cancelled">Cancelled</option>
         </select>
       </div>
