@@ -122,10 +122,7 @@ if (isset($_GET['food_id'])) {
                 # failed to insert
                 $_SESSION['order'] = '<div class="error text-center width">Failed to order food!</div>';
             }
-        } else {
-            # code...
         }
-
         ?>
 
     </div>
