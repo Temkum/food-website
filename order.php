@@ -124,8 +124,9 @@ if (isset($_GET['food_id'])) {
             }
         }
         ?>
-
     </div>
+
+    <div class="mobile-money-qr-payment"></div>
 </section>
 
 <?php include 'include/footer.php'; ?>

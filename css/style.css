@@ -4,10 +4,22 @@
 
 /* CSS for All */
 * {
-    margin: 0 0;
-    padding: 0 0;
+    margin: 0;
+    padding: 0;
     font-family: 'Lato', sans-serif;
     /* font-family: 'Nunito', sans-serif; */
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Nunito', 'Arial', 'Helvetica', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
 }
 
 .container {
@@ -45,14 +57,14 @@
     float: none;
 }
 
-a {
+/* a {
     color: #ff6b81;
     text-decoration: none;
 }
 
 a:hover {
     color: #ff4757;
-}
+} */
 
 .btn {
     padding: 1%;
@@ -255,6 +267,83 @@ fieldset {
 }
 
 
+/* FOOTER */
+footer {
+    background-color: rgb(26, 23, 23);
+    padding: 50px;
+    font-size: 80%;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li a {
+    color: rgb(136, 133, 133);
+}
+
+.footer-nav li a:hover {
+    color: #cf6d17;
+    transition: color 0.2s;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+    font-size: 160%;
+}
+
+.social-links .ion-social-facebook:hover {
+    color: #3b5998;
+}
+
+.social-links .ion-social-twitter:hover {
+    color: #00aced;
+}
+
+.social-links .ion-social-googleplus:hover {
+    color: #dd4d39;
+}
+
+.social-links .ion-social-instagram:hover {
+    color: #517fa4;
+}
+
+.social-links .ion-social-youtube:hover {
+    color: #bb0000;
+}
+
+.social-links .ion-social-facebook,
+.social-links .ion-social-twitter,
+.social-links .ion-social-googleplus,
+.social-links .ion-social-instagram,
+.social-links .ion-social-youtube {
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+    color: #555;
+}
+
+footer p {
+    color: #888;
+    text-align: center;
+    margin-top: 60px;
+}
 
 /* CSS for Mobile Size or Smaller Screen */
 

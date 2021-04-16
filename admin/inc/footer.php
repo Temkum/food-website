@@ -1,7 +1,7 @@
  <!-- FOOTER -->
  <div class="footer bottom">
    <div class="wrapper">
-     <p class="text-center">Copyright 2021. All Rights Reserved by Wangis.</p>
+     <p class="text-center">Copyright &copy; 2021 by Restaurant. All rights reserved.</p>
    </div>
  </div>
 

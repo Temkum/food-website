@@ -7,7 +7,15 @@
   <meta charset="UTF-8">
   <!-- Important to make website responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Restaurant is a premium food delivery service with the mission to bring affordable meals to as many people as possible.">
+
   <title>Restaurant Website</title>
+
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/grid.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+  <link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
+  <link rel="stylesheet" type="text/css" href="css/queries.css">
 
   <!-- Link our CSS file -->
   <link rel="stylesheet" href="css/style.css">
