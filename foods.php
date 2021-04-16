@@ -15,7 +15,7 @@
 <!-- FOOD MENU -->
 <section class="food-menu">
     <div class="container">
-        <h2 class="text-center">Food Menu</h2>
+        <h2 class="text-center">Today's Menu</h2>
         <?php
         $sql = "SELECT * FROM food WHERE active='Yes' ";
 
@@ -38,7 +38,7 @@
                             echo '<div class="alert alert-warning" role="alert">Image not available!</div>';
                         } else {
                         ?>
-                            <img src="<?php echo SITE_URL; ?>images/food/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                            <img src="<?php echo SITE_URL; ?>images/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" class="img-responsive img-curve">
                         <?php
                         }
                         ?>

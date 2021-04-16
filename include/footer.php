@@ -62,11 +62,11 @@
 <script src="//cdn.jsdelivr.net/selectivizr/1.0.3b/selectivizr.min.js"></script>
 <script src="./js/jquery.waypoints.min.js"></script>
 
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
 <script src="js/admin.js"></script>
 <script src="js/main.js"></script>
 
-<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 
 </html>

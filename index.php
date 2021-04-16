@@ -1,7 +1,7 @@
-<?php include 'include/navbar.php'; ?>
+<?php include 'include/header.php'; ?>
 
 <!-- FOOD SEARCH -->
-<section class="food-search text-center">
+<section class="food-search text-center" hidden>
     <div class="container">
 
         <form action="<?php echo SITE_URL; ?>food-search.php" method="POST">
@@ -132,7 +132,7 @@ if (isset($_SESSION['order'])) {
     </div>
 
     <p class="text-center">
-        <a href="#">See All Foods</a>
+        <a href="<?php echo SITE_URL; ?>foods.php">See All Foods</a>
     </p>
 </section>
 <!-- Food Menu Section Ends Here -->

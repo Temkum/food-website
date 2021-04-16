@@ -23,16 +23,12 @@
 
 <body>
   <!-- NAVBAR -->
-  <section class="navbar">
-    <div class="container">
-      <div class="logo">
-        <a href="#" title="Logo">
-          <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
-        </a>
-      </div>
-
-      <div class="menu text-right">
-        <ul>
+  <header>
+    <nav>
+      <div class="row">
+        <img src="images/logo.png" alt="logo white" class="logo">
+        <img src="" alt="logo black" class="logo-black">
+        <ul class="main-nav js-main-nav">
           <li>
             <a href="<?php echo SITE_URL; ?>">Home</a>
           </li>
@@ -48,7 +44,13 @@
         </ul>
         <a href="#" class="mobile-nav js-mobile-nav" <i class="ion-navicon-round"></i></a>
       </div>
+    </nav>
 
-      <div class="clearfix"></div>
+    <div class="hero-text-box" id="hideText">
+      <h1>Goodbye junk food <br>
+        Hello super healthy meals</h1>
+      <a class="hero-btn hero-btn-full js-scroll-to-plan" href="<?php echo SITE_URL; ?>order.php">I'm hungry</a>
+      <a class="hero-btn hero-btn-ghost js-scroll-to-start" href="<?php echo SITE_URL; ?>foods.php">Show me more</a>
     </div>
-  </section>
+
+  </header>

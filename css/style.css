@@ -27,6 +27,7 @@ body {
     margin: 0 auto;
 }
 
+
 .clearfix {
     zoom: 1
 }
@@ -98,9 +99,9 @@ h3 {
 
 .logo {
     height: 50px;
-    width: auto;
+    width: 50px;
     float: left;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .logo-black {
@@ -120,7 +121,7 @@ h3 {
 .main-nav li {
     display: inline-block;
     margin-left: 40px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .main-nav li a:link,
@@ -178,6 +179,19 @@ h3 {
     margin-top: 15px;
 }
 
+/* mobile nav */
+.mobile-nav {
+    float: right;
+    cursor: pointer;
+    margin-top: 30px;
+    display: none;
+}
+
+.mobile-nav i {
+    font-size: 200%;
+    color: white;
+}
+
 /* buttons */
 .hero-btn:link,
 .hero-btn:visited,
@@ -228,6 +242,8 @@ input[type=submit] {
     color: #fff;
 }
 
+
+/***********  ***************** */
 .container {
     width: 80%;
     margin: 0 auto;
@@ -317,7 +333,7 @@ fieldset {
 }
 
 
-/* CSSS for navbar section */
+/* CSS for navbar section */
 
 .logo {
     width: 10%;
@@ -339,7 +355,7 @@ fieldset {
 }
 
 
-/* CSS for Food SEarch Section */
+/* FOOD SEARCH Section */
 
 .food-search {
     background-image: url(../images/bg.jpg);
@@ -350,7 +366,7 @@ fieldset {
 }
 
 .food-search input[type="search"] {
-    width: 50%;
+    width: 30%;
     padding: 1%;
     font-size: 1rem;
     border: none;

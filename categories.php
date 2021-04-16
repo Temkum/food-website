@@ -1,7 +1,7 @@
 <?php include 'include/navbar.php'; ?>
 
 <!-- Categories Section Starts Here -->
-<section class="categories">
+<section class="categories" id="">
     <div class="container">
         <h2 class="text-center">Explore food categories</h2>
 
