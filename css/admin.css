@@ -70,6 +70,7 @@
   margin: 1%;
   padding: 2%;
   float: left;
+  border-left: #891b8f 4px solid;
 }
 
 .login {

@@ -20,7 +20,7 @@ if (isset($_SESSION['order'])) {
 ?>
 
 <!-- CATEGORY -->
-<section class="categories">
+<section class="categories js--section-categories">
     <div class="container">
         <h2 class="text-center">Explore Foods</h2>
 

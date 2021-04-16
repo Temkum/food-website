@@ -24,7 +24,7 @@
 <body>
   <!-- NAVBAR -->
   <header>
-    <nav sticky>
+    <nav>
       <div class="row">
         <img src="images/logo.png" alt="logo white" class="logo">
         <img src="" alt="logo black" class="logo-black">
@@ -39,7 +39,7 @@
             <a href="<?php echo SITE_URL; ?>foods.php">Foods</a>
           </li>
           <li>
-            <a href="<?php echo SITE_URL; ?>">Contact</a>
+            <a href="<?php echo SITE_URL; ?>contact.php">Contact</a>
           </li>
         </ul>
         <a href="#" class="mobile-nav js-mobile-nav" <i class="ion-navicon-round"></i></a>
@@ -49,13 +49,13 @@
     <div class="hero-text-box">
       <h1>Goodbye junk food <br>
         Hello super healthy meals</h1>
-      <a class="btn btn-full js-scroll-to-plan" href="#">I'm hungry</a>
-      <a class="btn btn-ghost js-scroll-to-start" href="#">Show me more</a>
+      <a class="hero-btn hero-btn-full js-scroll-to-plan" href="#">I'm hungry</a>
+      <a class="hero-btn hero-btn-ghost js-scroll-to-start" href="#">Show me more</a>
     </div>
 
   </header>
   <hr>
-
+  <!-- 
   <section class="navbar">
     <div class="container">
       <div class="logo">
@@ -83,4 +83,4 @@
 
       <div class="clearfix"></div>
     </div>
-  </section>
+  </section> -->
