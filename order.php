@@ -34,7 +34,7 @@ if (isset($_GET['food_id'])) {
 <section class="food-search">
     <div class="container">
 
-        <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
+        <h4 class="text-center text-white">Fill this form to confirm your order.</h4>
 
         <form action="" class="order" method="POST">
             <fieldset>

@@ -10,8 +10,13 @@
 
 body {
   background: url('../images/pic1.jpg');
+  /* background-size: cover;
+  background-position: contain; */
+
   background-size: cover;
-  background-position: contain;
+  background-position: center;
+  height: 100vh;
+  background-attachment: fixed;
 }
 
 .loginbox {

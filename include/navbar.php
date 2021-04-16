@@ -17,12 +17,45 @@
   <link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
   <link rel="stylesheet" type="text/css" href="css/queries.css">
 
-  <!-- Link our CSS file -->
+  <!-- custom css -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <!-- Navbar Section Starts Here -->
+  <!-- NAVBAR -->
+  <header>
+    <nav sticky>
+      <div class="row">
+        <img src="images/logo.png" alt="logo white" class="logo">
+        <img src="" alt="logo black" class="logo-black">
+        <ul class="main-nav js-main-nav">
+          <li>
+            <a href="<?php echo SITE_URL; ?>">Home</a>
+          </li>
+          <li>
+            <a href="<?php echo SITE_URL; ?>categories.php">Categories</a>
+          </li>
+          <li>
+            <a href="<?php echo SITE_URL; ?>foods.php">Foods</a>
+          </li>
+          <li>
+            <a href="<?php echo SITE_URL; ?>">Contact</a>
+          </li>
+        </ul>
+        <a href="#" class="mobile-nav js-mobile-nav" <i class="ion-navicon-round"></i></a>
+      </div>
+    </nav>
+
+    <div class="hero-text-box">
+      <h1>Goodbye junk food <br>
+        Hello super healthy meals</h1>
+      <a class="btn btn-full js-scroll-to-plan" href="#">I'm hungry</a>
+      <a class="btn btn-ghost js-scroll-to-start" href="#">Show me more</a>
+    </div>
+
+  </header>
+  <hr>
+
   <section class="navbar">
     <div class="container">
       <div class="logo">
