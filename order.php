@@ -34,7 +34,7 @@ if (isset($_GET['food_id'])) {
 <section class="food-search">
     <div class="container">
 
-        <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
+        <h2 class="text-center text-white">Fill this form to place your order.</h2>
 
         <form action="" class="order" method="POST">
             <fieldset>
@@ -73,16 +73,16 @@ if (isset($_GET['food_id'])) {
             <fieldset>
                 <legend>Delivery Details</legend>
                 <div class="order-label">Full Name</div>
-                <input type="text" name="full-name" placeholder="E.g. Kum Jude" class="input-responsive" required>
+                <input type="text" name="full-name" placeholder="Kum Jude" class="input-responsive" required>
 
                 <div class="order-label">Phone Number</div>
-                <input type="tel" name="contact" placeholder="E.g. 237 675-827-455" class="input-responsive" required>
+                <input type="tel" name="contact" placeholder="237 675-827-455" class="input-responsive" required>
 
                 <div class="order-label">Email</div>
-                <input type="email" name="email" placeholder="E.g. judekum14@gmail.com" class="input-responsive" required>
+                <input type="email" name="email" placeholder="judekum14@gmail.com" class="input-responsive" required>
 
                 <div class="order-label">Address</div>
-                <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
+                <textarea name="address" rows="10" placeholder="Street, City, Country" class="input-responsive" required></textarea>
 
                 <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
             </fieldset>
@@ -125,8 +125,6 @@ if (isset($_GET['food_id'])) {
         }
         ?>
     </div>
-
-    <div class="mobile-money-qr-payment"></div>
 </section>
 
 <?php include 'include/footer.php'; ?>
