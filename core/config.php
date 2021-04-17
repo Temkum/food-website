@@ -4,7 +4,7 @@ session_start();
 ob_start();
 
 // set your website title
-define('WEBSITE_TITLE', 'Wangis Restaurant');
+define('WEBSITE_TITLE', 'OmniFood');
 
 define('SITE_URL', '/wangis/');
 

@@ -19,6 +19,44 @@ if (isset($_SESSION['order'])) {
 }
 ?>
 
+<!-- FEATURES section -->
+<section class="section-features js--section-features" id="features">
+    <div class="row">
+        <h2>Get food fast &mdash; not fast food</h2>
+        <p class="long-copy">
+            Hello, we're Omnifood, your new premium food delivery service. We know you're always busy. No time for cooking.
+            So let us take care of that, we're really good at it. we promise!
+        </p>
+    </div>
+
+    <div class="row" js-wp-1>
+        <div class="col span-1-of-4 box">
+            <i class="ion-ios-infinite-outline icon-big"></i>
+            <h3>Up to 365</h3>
+            <p>Never cook again. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente voluptatum nemo
+                repellendus enim possimus nobis placeat quam molestiae, dolorum adipisci.</p>
+        </div>
+        <div class="col span-1-of-4 box">
+            <i class="ion-ios-stopwatch-outline icon-big"></i>
+            <h3>Ready in 20 minutes</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente voluptatum nemo repellendus enim possimus
+                nobis placeat quam molestiae, dolorum adipisci.</p>
+        </div>
+        <div class="col span-1-of-4 box">
+            <i class="ion-ios-nutrition-outline icon-big"></i>
+            <h3>100% Organic</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente voluptatum nemo repellendus enim possimus
+                nobis placeat quam molestiae, dolorum adipisci.</p>
+        </div>
+        <div class="col span-1-of-4 box">
+            <i class="ion-ios-cart-outline icon-big"></i>
+            <h3>Order anything</h3>
+            <p>Never cook again. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente voluptatum nemo
+                repellendus enim possimus nobis placeat quam molestiae, dolorum adipisci.</p>
+        </div>
+    </div>
+</section>
+
 <!-- CATEGORY -->
 <section class="categories js--section-categories">
     <div class="container">
@@ -70,6 +108,37 @@ if (isset($_SESSION['order'])) {
     </div>
 </section>
 <!-- Categories Section Ends Here -->
+
+<!-- HOW IT WORKS/steps -->
+<section class="section-steps" id="works">
+    <div class="row">
+        <h2>How it works &mdash; Simple as 1, 2, 3</h2>
+    </div>
+
+    <div class="row">
+        <div class="col span-1-of-2 steps-box">
+            <img src="./images/mockup.jpg" alt="App on iPhone" class="app-screen" class="js-wp-2">
+        </div>
+
+        <div class="col span-1-of-2 steps-box">
+            <div class="works-step">
+                <div>1</div>
+                <p>Choose what you want to eat!</p>
+            </div>
+            <div class="works-step">
+                <div>2</div>
+                <p>Order your delicious meal using our website. Or you can even call us!</p>
+            </div>
+            <div class="works-step">
+                <div>3</div>
+                <p>Enjoy your meal after less than 20 minutes. See you next time!</p>
+            </div>
+
+            <a href="#" class="btn-app"><img src="./images/download-app.svg" alt="Apple App"></a>
+            <a href="#" class="btn-app"><img src="./images/download-app-android.png" alt="Android App"></a>
+        </div>
+    </div>
+</section>
 
 <!-- FOOD MENU SECTION -->
 <section class="food-menu">

@@ -49,8 +49,8 @@
     <div class="hero-text-box" id="hideText">
       <h1>Goodbye junk food <br>
         Hello super healthy meals</h1>
-      <a class="hero-btn hero-btn-full js-scroll-to-plan" href="<?php echo SITE_URL; ?>order.php">I'm hungry</a>
-      <a class="hero-btn hero-btn-ghost js-scroll-to-start" href="<?php echo SITE_URL; ?>foods.php">Show me more</a>
+      <a class="hero-btn hero-btn-full js-scroll-to-plan" href="<?php echo SITE_URL; ?>order.php">Start eating well</a>
+      <a class="hero-btn hero-btn-ghost js-scroll-to-start" href="<?php echo SITE_URL; ?>foods.php">I'm hungry</a>
     </div>
 
   </header>

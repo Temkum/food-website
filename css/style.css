@@ -60,7 +60,8 @@ header {
 h1,
 h2,
 h3 {
-    font-weight: 400;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 
 h1 {
@@ -69,7 +70,7 @@ h1 {
     color: #fff;
     font-size: 230%;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     word-spacing: 3px;
     letter-spacing: 1px;
 }
@@ -97,6 +98,13 @@ h3 {
     margin-bottom: 15px;
 }
 
+/* paragraph */
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+}
+
 .logo {
     height: 50px;
     width: 50px;
@@ -121,7 +129,7 @@ h3 {
 .main-nav li {
     display: inline-block;
     margin-left: 40px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .main-nav li a:link,
@@ -240,6 +248,79 @@ input[type=submit] {
 .hero-btn-ghost:active {
     border: 1px solid #e67e22;
     color: #fff;
+}
+
+/* features section */
+section {
+    padding: 50px 0 0 0;
+}
+
+.box {
+    padding: 1%;
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+}
+
+.icon-big {
+    font-size: 300%;
+    display: block;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+/* HOW IT WORKS */
+.section-steps {
+    background-color: #f4f4f4;
+}
+
+.steps-box:first-child {
+    text-align: right;
+    padding-right: 3%;
+    margin-top: 30px;
+}
+
+.steps-box:last-child {
+    padding-right: 3%;
+    margin-top: 70px;
+}
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+}
+
+.works-step div {
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    display: inline-block;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 130%;
+    margin-right: 25px;
+}
+
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+.btn-app img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.btn-app:link,
+.btn-app:visited {
+    border: none;
 }
 
 /* CONTACT FORM */
